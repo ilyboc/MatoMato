@@ -80,7 +80,7 @@ namespace GP
                     switch (enemyMakeState)
                     {
                         case 0:
-                            enemyManager.makeTarget(0, 3, 13);
+                            enemyManager.makeBalloon(0, -1.5f, 10);
                             lastEnemyTime = Time.realtimeSinceStartup;
                             enemyMakeState++;
                             break;
@@ -235,11 +235,241 @@ namespace GP
                         stateStartTime = Time.realtimeSinceStartup;
                     }
                     break;
+                // Wave5
+                case 14:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeBalloon(-3, 0f, 8);
+                            enemyManager.makeBalloon(3, 0f, 8);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 3 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.5f)
+                            {
+                                enemyManager.makeBalloon(-3 - 3*enemyMakeState, 0f, 8);
+                                enemyManager.makeBalloon(3 + 3*enemyMakeState, 0f, 8);
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 15: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                case 16://(一定時間待機)
+                    if (Time.realtimeSinceStartup - stateStartTime > 0.5f)
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                // Wave6
+                case 17:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeTarget(-12, 3, 13);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 15 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.5f)
+                            {
+                                if (enemyMakeState <= 7)
+                                {
+                                    if (enemyMakeState % 3 == 0) enemyManager.makeMalusTarget(-12 + 4 * enemyMakeState, 3, 13);
+                                    else enemyManager.makeTarget(-12 + 4 * enemyMakeState, 3, 13);
+                                }
+                                else
+                                {
+                                    if (enemyMakeState % 3 == 0) enemyManager.makeMalusTarget(12 - 4 * (enemyMakeState - 8), 15, 13);
+                                    else enemyManager.makeTarget(12 - 4 * (enemyMakeState - 8), 15, 13);
+                                }
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 18: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                case 19://(一定時間待機)
+                    if (Time.realtimeSinceStartup - stateStartTime > 0.5f)
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                // Wave2
+                case 20:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeTarget(Random.Range(-12.0f, 12.0f), 3, 13);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 4 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.5f)
+                            {
+                                if (n == 4) enemyManager.makeMalusTarget(Random.Range(-12.0f, 12.0f), 3 + enemyMakeState * 3, 13);
+                                else enemyManager.makeTarget(Random.Range(-12.0f, 12.0f), 3 + enemyMakeState * 3, 13);
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 21: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                case 22:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeTarget(Random.Range(-12.0f, 12.0f), 3, 13);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 4 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.5f)
+                            {
+                                if (n == 3) enemyManager.makeMalusTarget(Random.Range(-12.0f, 12.0f), 3 + enemyMakeState * 3, 13);
+                                else enemyManager.makeTarget(Random.Range(-12.0f, 12.0f), 3 + enemyMakeState * 3, 13);
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 23: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                // Wave6
+                case 24:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeTarget(-12, 3, 13);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 15 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.15f)
+                            {
+                                if (enemyMakeState <= 7)
+                                {
+                                    if (enemyMakeState % 3 == 0) enemyManager.makeMalusTarget(-12 + 4 * enemyMakeState, 3, 13);
+                                    else enemyManager.makeTarget(-12 + 4 * enemyMakeState, 3, 13);
+                                }
+                                else
+                                {
+                                    if (enemyMakeState % 3 == 0) enemyManager.makeMalusTarget(12 - 4 * (enemyMakeState - 8), 15, 13);
+                                    else enemyManager.makeTarget(12 - 4 * (enemyMakeState - 8), 15, 13);
+                                }
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 25: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                case 26://(一定時間待機)
+                    if (Time.realtimeSinceStartup - stateStartTime > 0.5f)
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
+                // Wave5
+                case 27:
+                    switch (enemyMakeState)
+                    {
+                        case 0:
+                            enemyManager.makeBalloon(-3, 0f, 8);
+                            enemyManager.makeBalloon(3, 0f, 8);
+                            lastEnemyTime = Time.realtimeSinceStartup;
+                            enemyMakeState++;
+                            break;
+                        case int n when (n <= 3 && n >= 1):
+                            if (Time.realtimeSinceStartup - lastEnemyTime > 0.5f)
+                            {
+                                enemyManager.makeBalloon(-3 - 3 * enemyMakeState, 0f, 8);
+                                enemyManager.makeBalloon(3 + 3 * enemyMakeState, 0f, 8);
+                                lastEnemyTime = Time.realtimeSinceStartup;
+                                enemyMakeState++;
+                            }
+                            break;
+                        default:
+                            gameState++;
+                            enemyMakeState = 0;
+                            break;
+                    }
+                    break;
+
+                case 28: // 敵がいなくなったら次のwaveへ
+                    if (enemyManager.isEmptyEnemies())
+                    {
+                        gameState++;
+                        stateStartTime = Time.realtimeSinceStartup;
+                    }
+                    break;
 
                 case 1000://ゲームクリア
 
                     timeText.text = "Time:" + (int)(Time.realtimeSinceStartup - gameStartTime);
-                    gameText.text = "Clear\n" + "Time:" + (int)(Time.realtimeSinceStartup - gameStartTime) + " s";
+                    gameText.text = "Clear\n" + "Your Score: " + scoreManager.Score;
                     gameState++;
                     break;
 

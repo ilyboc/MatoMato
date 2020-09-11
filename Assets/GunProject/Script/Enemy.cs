@@ -31,7 +31,6 @@ namespace GP
             {
                 dameged(1);
                 Destroy(col.gameObject);
-                
             }
         }
 

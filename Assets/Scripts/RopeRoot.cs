@@ -20,7 +20,7 @@ public class RopeRoot : MonoBehaviour
     void Awake()
     {
         if (RigidBodyContainer == null)
-            RigidBodyContainer = new GameObject("RopeRigidbodyContainer");
+            RigidBodyContainer = new GameObject("RopeRigidbodyContainer" + GetInstanceID());
 
         CopySource = new List<Transform>();
         CopyDestination = new List<Transform>();
@@ -72,5 +72,10 @@ public class RopeRoot : MonoBehaviour
             CopyDestination[i].position = CopySource[i].position + PositionOffset;
             CopyDestination[i].rotation = CopySource[i].rotation * Quaternion.Euler(RotationOffset);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(RigidBodyContainer);
     }
 }
