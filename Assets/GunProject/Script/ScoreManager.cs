@@ -17,8 +17,8 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void addScore()
+    public void addScore(int amnt)
     {
-        Score++;
+        Score += amnt;
     }
 }

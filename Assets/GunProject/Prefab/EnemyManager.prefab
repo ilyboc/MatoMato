@@ -48,5 +48,7 @@ MonoBehaviour:
     type: 3}
   targetToCreate: {fileID: 1790346831912769588, guid: 941f177a810ca27419c61e42a07894a5,
     type: 3}
+  malusTargetToCreate: {fileID: 1790346831912769588, guid: 5cb36225adaafd2438095183fcb3e209,
+    type: 3}
   balloonToCreate: {fileID: 7981346752027312778, guid: 3bd78809a5eec434e80044b669cf6d6a,
     type: 3}

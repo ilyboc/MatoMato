@@ -10,6 +10,7 @@ namespace GP
         public Player player1;
         public eyeBat eyeBatToCreate;
         public Target targetToCreate;
+        public Target malusTargetToCreate;
         public Balloon balloonToCreate;
         protected Enemy[] enemyArray;
         int maxEnemies = 100;
@@ -55,6 +56,20 @@ namespace GP
                 if (enemyArray[i] == null)
                 {
                     enemyArray[i] = Instantiate(targetToCreate);
+                    Target enemy = enemyArray[i] as Target;
+                    enemy.initialize(x, y, z);
+                    enemy.player1 = this.player1;
+                    break;
+                }
+            }
+        }
+        public void makeMalusTarget(float x, float y, float z)
+        {
+            for (int i = 0; i < maxEnemies; i++)
+            {
+                if (enemyArray[i] == null)
+                {
+                    enemyArray[i] = Instantiate(malusTargetToCreate);
                     Target enemy = enemyArray[i] as Target;
                     enemy.initialize(x, y, z);
                     enemy.player1 = this.player1;

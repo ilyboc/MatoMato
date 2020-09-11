@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1790346831912769588}
   - component: {fileID: 1113957543848805302}
   m_Layer: 0
-  m_Name: Target
+  m_Name: MalusTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7922251121040759823, guid: f82f546aaef6d8541a6f0c70e5fb9740, type: 3}
+  - {fileID: 2100000, guid: 63f6fbfc117ff364580361e4503f5ed8, type: 2}
   - {fileID: 7211448773848044386, guid: f82f546aaef6d8541a6f0c70e5fb9740, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -114,10 +114,10 @@ MonoBehaviour:
   maxHp: 2
   player1: {fileID: 0}
   rotationSpeed: 10
-  appear: {fileID: 8300000, guid: 8ace21c1be735bb41a1d9bb24d6cbecf, type: 3}
-  death: {fileID: 8300000, guid: d9c766ad0d418394989f1d3a8fe7232d, type: 3}
-  disappear: {fileID: 8300000, guid: 8ace21c1be735bb41a1d9bb24d6cbecf, type: 3}
-  scoreValue: 1
+  appear: {fileID: 8300000, guid: 14f277cbf1d6f09458ef4183d217dde1, type: 3}
+  death: {fileID: 8300000, guid: 9b478a74f452dff47b5fa4ad98eb8b59, type: 3}
+  disappear: {fileID: 8300000, guid: 9b478a74f452dff47b5fa4ad98eb8b59, type: 3}
+  scoreValue: -1
 --- !u!82 &1113957543848805302
 AudioSource:
   m_ObjectHideFlags: 0

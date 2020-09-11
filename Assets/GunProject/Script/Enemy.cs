@@ -31,8 +31,7 @@ namespace GP
             {
                 dameged(1);
                 Destroy(col.gameObject);
-                GameObject scoreManager = GameObject.FindGameObjectWithTag("ScoreManager") ;
-                scoreManager.GetComponent<ScoreManager>().addScore();
+                
             }
         }
 
