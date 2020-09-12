@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 1065816759}
   - component: {fileID: -1185991227586705735}
   m_Layer: 0
-  m_Name: Balloon
+  m_Name: balloon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274569596747572719}
   m_Enabled: 1
-  m_Force: {x: 0, y: 1, z: 0}
+  m_Force: {x: 0, y: 0.5, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
